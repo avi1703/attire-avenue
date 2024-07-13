@@ -6,6 +6,7 @@ const multer = require("multer");
 const path = require("path");
 const cors = require('cors'); 
 
+require('dotenv').config();
 const port = process.env.PORT || 4000;
 
 app.use(express.json());
