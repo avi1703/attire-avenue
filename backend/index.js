@@ -299,3 +299,5 @@ app.listen(4000, (error) => {
         console.log("Error : " + error);
     }
 })
+
+module.exports = app;
