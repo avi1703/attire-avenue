@@ -12,8 +12,9 @@ const port = process.env.PORT || 4000;
 app.use(express.json());
 app.use(cors()); 
 
-
-mongoose.connect("mongodb+srv://avinashsharma301997:czpcbEqVzxLqG4Eq@cluster0.opo3bgs.mongodb.net/e-commerce")
+mongoose.connect(process.env.MONGODB_URI)
+    .then(() => console.log("MongoDB connected"))
+    .catch((error) => console.error("MongoDB connection error:", error));
 
 
 app.get("/", (req, res) => {
@@ -154,6 +155,8 @@ const Users = mongoose.model('Users', {
 })
 
 
+const jwtSecret = process.env.JWT_SECRET;
+
 app.post('/signup', async (req, res) => {
 
     let check = await Users.findOne({ email: req.body.email });
@@ -179,7 +182,7 @@ app.post('/signup', async (req, res) => {
         }
     }
 
-    const token = jwt.sign(data, 'secret_ecom');
+    const token = jwt.sign(data, jwtSecret);
 
     res.json({ sucess: true, token });
 })
@@ -195,7 +198,7 @@ app.post('/login', async (req, res) => {
                     id: user.id
                 }
             }
-            const token = jwt.sign(data, 'secret_ecom');
+            const token = jwt.sign(data, jwtSecret);
             res.json({ sucess: true, token });
         }
         else {
@@ -228,7 +231,7 @@ const fetchUser = async (req, res, next) => {
     }
     else {
         try {
-            const data = jwt.verify(token, 'secret_ecom');
+            const data = jwt.verify(token, jwtSecret);
             req.user = data.user;
             next();
         } catch (error) {
