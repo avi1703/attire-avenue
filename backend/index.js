@@ -36,7 +36,7 @@ app.use('/images', express.static(path.resolve(__dirname, 'Upload/images')));
 app.post("/Upload", upload.single('product'), (req, res) => {
     res.json({
         success: 1,
-        image_url: `https://attire-avenue-backend.onrender.comimages/${req.file.filename}`
+        image_url: `https://attire-avenue-backend.onrender.com/images/${req.file.filename}`
     });
 });
 
