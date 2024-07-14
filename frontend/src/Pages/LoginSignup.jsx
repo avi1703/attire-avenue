@@ -25,7 +25,7 @@ const LoginSignup = () => {
   const login = async () => {
     console.log("Login Attempt!", formData);
     let responseData;
-    await fetch('http://https://attire-avenue-backend.onrender.com/login', {
+    await fetch('https://attire-avenue-backend.onrender.com/login', {
       method: 'POST',
       headers: {
         Accept: "application/form-data",
@@ -45,7 +45,7 @@ const LoginSignup = () => {
   const signup = async () => {
     console.log("Attempting signup with:", formData);
     let responseData;
-    await fetch('http://https://attire-avenue-backend.onrender.com/signup', {
+    await fetch('https://attire-avenue-backend.onrender.com/signup', {
       method: 'POST',
       headers: {
         Accept: "application/form-data",

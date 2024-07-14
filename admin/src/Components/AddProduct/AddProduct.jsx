@@ -30,7 +30,7 @@ const AddProduct = () => {
 
     try {
 
-      const uploadResponse = await fetch('http://https://attire-avenue-backend.onrender.com/Upload', {
+      const uploadResponse = await fetch('https://attire-avenue-backend.onrender.com/Upload', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -49,7 +49,7 @@ const AddProduct = () => {
         console.log(product);
 
 
-        const addProductResponse = await fetch('http://https://attire-avenue-backend.onrender.com/addproduct', {
+        const addProductResponse = await fetch('https://attire-avenue-backend.onrender.com/addproduct', {
           method: 'POST',
           headers: {
             Accept: 'application/json',

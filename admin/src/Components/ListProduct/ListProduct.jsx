@@ -7,7 +7,7 @@ const ListProduct = () => {
   const [allproducts, setAllProducts] = useState([]);
 
   const fetchInfo = async () => {
-    await fetch('http://https://attire-avenue-backend.onrender.com/allproducts').then((res) => res.json()).then((data) => { setAllProducts(data) });
+    await fetch('https://attire-avenue-backend.onrender.com/allproducts').then((res) => res.json()).then((data) => { setAllProducts(data) });
   }
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const ListProduct = () => {
   }, [])
 
   const remove_product = async (id) => {
-    await fetch('http://https://attire-avenue-backend.onrender.com/removeproduct', {
+    await fetch('https://attire-avenue-backend.onrender.com/removeproduct', {
       method: 'POST',
       headers: {
         Accept: 'application/json',

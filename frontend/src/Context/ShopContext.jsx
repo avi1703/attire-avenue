@@ -18,12 +18,12 @@ const ShopContextProvider = (props) => {
     const [cartItems, setCartItems] = useState(getDefaultCart());
 
     useEffect(() => {
-        fetch('http://https://attire-avenue-backend.onrender.com/allproducts')
+        fetch('https://attire-avenue-backend.onrender.com/allproducts')
             .then((response) => response.json())
             .then((data) => setAll_Product(data))
 
         if (localStorage.getItem('auth-token')) {
-            fetch('http://https://attire-avenue-backend.onrender.com/getcart', {
+            fetch('https://attire-avenue-backend.onrender.com/getcart', {
                 method: 'POST',
                 headers: {
                     Accept: 'application/form-data',
@@ -40,7 +40,7 @@ const ShopContextProvider = (props) => {
     const addToCart = (itemId) => {
         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
         if (localStorage.getItem('auth-token')) {
-            fetch('http://https://attire-avenue-backend.onrender.com/addtocart', {
+            fetch('https://attire-avenue-backend.onrender.com/addtocart', {
                 method: 'POST',
                 headers: {
                     Accept: "application/form-data",
@@ -80,7 +80,7 @@ const ShopContextProvider = (props) => {
     const removeFromCart = (itemId) => {
         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
         if (localStorage.getItem('auth-token')) {
-            fetch('http://https://attire-avenue-backend.onrender.com/removefromcart', {
+            fetch('https://attire-avenue-backend.onrender.com/removefromcart', {
                 method: 'POST',
                 headers: {
                     Accept: "application/form-data",
@@ -104,7 +104,7 @@ const ShopContextProvider = (props) => {
         });
     
         if (localStorage.getItem('auth-token')) {
-            fetch('http://https://attire-avenue-backend.onrender.com/clearcart', {
+            fetch('https://attire-avenue-backend.onrender.com/clearcart', {
                 method: 'POST',
                 headers: {
                     Accept: "application/form-data",
