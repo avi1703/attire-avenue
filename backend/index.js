@@ -23,21 +23,17 @@ app.get("/", (req, res) => {
 
  
 const storage = multer.diskStorage({
-    destination: "./Upload/images",
+    destination: path.resolve(__dirname, "./Upload/images"),
     filename: (req, file, cb) => {
         return cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`)
     }
-})
+});
 
 const upload = multer({ storage: storage })
 
-
-app.use('/images', express.static('Upload/images'))
+app.use('/images', express.static(path.resolve(__dirname, 'Upload/images')));
 
 app.post("/Upload", upload.single('product'), (req, res) => {
-    // Assuming images are served relative to the current backend server
-    // Gets current host dynamically
-
     res.json({
         success: 1,
         image_url: `https://attire-avenue-backend.onrender.com/images/${req.file.filename}`
