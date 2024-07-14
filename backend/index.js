@@ -35,11 +35,15 @@ const upload = multer({ storage: storage })
 app.use('/images', express.static('Upload/images'))
 
 app.post("/Upload", upload.single('product'), (req, res) => {
+    // Assuming images are served relative to the current backend server
+    const baseUrl = `${req.protocol}://${req.get('host')}`; // Gets current host dynamically
+
     res.json({
         success: 1,
-        image_url: `http://localhost:${port}/images/${req.file.filename}`
-    })
-})
+        image_url: `${baseUrl}/images/${req.file.filename}`
+    });
+});
+
 
 
 
