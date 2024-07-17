@@ -4,7 +4,8 @@
     justify-content: end;
     align-items: center;
     gap: 30px;
-    height: 300px;
+    height: 350px;
+    margin-top: 10px;
 }
 
 .footer-logo {
@@ -13,10 +14,16 @@
     gap: 20px;
 }
 
+.footer-logo img{
+    height: 200px;
+}
+
 .footer-logo p {
     color: #383838;
-    font-size: 46px;
-    font-weight: 700;
+    width: 110px;
+    font-size: 36px;
+    font-family: fantasy;
+    text-decoration: underline;
 }
 
 .footer-copyright {
@@ -40,7 +47,7 @@
 
 @media(max-width:800px) {
     .footer {
-        height: 150px;
+        height: 300px;
         gap: 20px;
     }
 
@@ -48,9 +55,9 @@
         gap: 10px;
     }
 
-    .footer-logo img {
+    /* .footer-logo img {
         width: 40px;
-    }
+    } */
 
     .footer-logo p {
         font-size: 25px;

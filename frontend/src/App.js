@@ -11,6 +11,7 @@ import men_banner from './Components/Assets/banner_mens.png';
 import women_banner from './Components/Assets/banner_women.png';
 import kids_banner from './Components/Assets/banner_kids.png';
 import PaymentSlip from './Pages/PaymentSlip'
+import Paymentgateway from './Components/PaymentGateway/Paymentgateway'
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/login" element={<LoginSignup />} />
           <Route path="/paymentslip" element={<PaymentSlip />} />
+          <Route path="/paymentgateway" element={<Paymentgateway />} />
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect, useRef } from 'react';
 import './Navbar.css';
-import logo from '../Assets/logo.png';
+import logo from '../Assets/circular_logo.png';
 import cart_icon from '../Assets/cart_icon.png';
 import { Link, useLocation } from 'react-router-dom';
 import { ShopContext } from '../../Context/ShopContext';
@@ -26,8 +26,8 @@ const Navbar = () => {
   return (
     <div className='navbar'>
       <div className="nav-logo">
-        <img src={logo} alt="Logo" />
-        <p>SHOPPER</p>
+        <Link to="/"><img src={logo} alt="Logo" /></Link>  
+        {/* <p>Attire Avenue</p> */}
       </div>
       <img className='nav-dropdown' onClick={dropdown_toggle} src={nav_dropdown} alt="" />
       <ul ref={menuRef} className='nav-menu'>

@@ -1,7 +1,6 @@
 .navbar {
     display: flex;
     justify-content: space-around;
-    padding: 16px;
     box-shadow: 0 1px 3px -2px black;
     align-items: center;
     position: relative;
@@ -9,16 +8,20 @@
     z-index: 10;
 }
 
-.nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.nav-logo{
+    height: 110px;
+}
+
+.nav-logo img{
+    margin-top: -20px;
+    height: 150px;
 }
 
 .nav-logo p {
     color: #171717;
     font-size: 38px;
     font-weight: 600;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .nav-menu {
@@ -104,10 +107,7 @@
         padding: 12px 50px;
     }
 
-    .nav-logo img {
-        width: 40px;
-    }
-
+    
     .nav-logo p {
         font-size: 25px;
     }
@@ -161,7 +161,12 @@
 
 @media (max-width: 800px) {
     .navbar {
-        padding: 10px 0px;
+        height: 60px;
+    }
+
+    .nav-logo img{
+        height: 120px;
+        margin-top: 0px;
     }
 
     .nav-dropdown {
@@ -177,7 +182,7 @@
         height: 80px;
         width: 100%;
         position: absolute;
-        top: 50px;
+        top: 75px;
 
         justify-content: center;
         background: white;
@@ -216,4 +221,11 @@
 
 body.dropdown-open .shop-category {
     margin-top: 90px;
+}
+
+@media(max-width:350px){
+    .nav-logo img{
+        height: 90px;
+        margin-top: 10px;
+    }
 }

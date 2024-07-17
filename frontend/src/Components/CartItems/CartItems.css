@@ -117,6 +117,13 @@
      background: #eaeaea;
  }
 
+.cartitems-promobox input:disabled,
+.cartitems-promobox button:disabled {
+  opacity: 0.6; 
+  cursor: not-allowed; 
+}
+
+
  .cartitems-promobox input {
      border: none;
      outline: none;
@@ -147,30 +154,30 @@
     padding-top: 4px;
  }
 
- .bankaccount-details{
-    display: flex;
-    flex-direction: column;
-    margin-top: 50px;
-    gap: 10px;
+ .cartitems-promocode .name-box{
+    /* padding-top: 100px; */
+    margin-bottom: 50px;
  }
 
- .bankaccount-details label{
-    display: block;
-    font-size: 1.17em;
-    font-weight: bold; 
-    margin: 0.67em 0; 
-    color: #333;
+ .cartitems-promocode .name-box p{
+    color: rgb(173, 172, 172);
+    padding-bottom: 10px;
  }
 
- .bankaccount-details input{
+ .cartitems-promocode .name-box input{
     display: block;
     background: #eaeaea;
     border: none;
     border-radius: 6px;
     width: 500px;
-    height: 50px;
+    height: 60px;
     outline: none;
     padding-left: 10px;
+ }
+
+ .cartitems-promocode .name-box .error-message{
+    color: red;
+    margin: 10px auto;
  }
 
  .cart .error-message{
@@ -178,92 +185,16 @@
     margin: 10px auto;
  }
 
- .bankaccount-details .error-message{
-    color: red;
-    margin: 10px auto;
- }
-
- .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.67); /* Semi-transparent black */
-    z-index: 1000; /* Ensure it's above other content */
-    backdrop-filter: blur(5px); /* Apply blur effect */
-    -webkit-backdrop-filter: blur(5px); /* For Safari */
-  }
-  
-
- .popup {
-    /* Define your styles for the popup */
-    height: 250px;
-    position: fixed;
-    top: 200px;
-    left: 560px;
-    width: 400px;
-    background: white;
-    border: 1px solid #ccc;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    z-index: 1001;
-  }
-
-  .popup-inner{
-    height: 250px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .popup-inner h2{
-    font-weight: 600;
-    text-decoration: underline;
-    font-style: oblique;
-    font-family: cursive;
-
-  }
-
-  .popup-inner p{
-    margin-top: 30px;
-    font-weight: 600;
-  }
-
-  .popup-buttons{
-    margin-top: 30px;
+ .cartitems-promocode .cartitems-totals{
+    margin-top: 40px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border: none;
-    height: 40px;
-    width: 200px;
-  }
+ }
 
-  .popup-buttons button{
-    background-color: red;
-    border: none;
-    width: 80px;
-    height: 50px;
-    color: white;
-    font-weight: 600;
-    border-radius: 5px;
-  }
-
-  .popup-buttons button:hover{
-    background-color: rgb(255, 168, 168);
-    cursor: pointer;
-    transform: scale(0.97);
-  }
-
-  @media (min-width:1900px) and (max-width:2570px){
-    .popup{
-        top: 400px;
-        left: 1000px;
-        transform: scale(1.5);
-    }
-  }
-  
+ .cartitems-promocode hr{
+    margin-top: 10px;
+ }
 
  @media(max-width:1280px) {
      .cartitems {
@@ -316,26 +247,10 @@
      .cartitems-promobox input {
          width: 100%;
      }
-
-     .popup{
-        left: 35%;
-     }
- }
-
- @media(max-width:800px){
-    .popup{
-        left: 30%;
-        transform: scale(0.8);
-    }
  }
 
 
  @media(max-width:500px) {
-
-    .popup{
-        left: 5%;
-        
-    }
      .cartitem-format-main {
          display: none;
          grid-template-columns: 0.5fr 3fr 0.5fr;
@@ -351,30 +266,14 @@
         font-size: 12px;
         width: 200px;
      }
-
-     .bankaccount-details input{
-        width: auto;
-     }
-
+     
      .cartitems-total-item label{
         font-size: 12px;
      }
  }
 
  @media(max-width:410px){
-
-    .popup{
-        transform: scale(0.7);
-        left: -10px;
-    }
     .cartitems-total-item input{
         width: 160px;
      }
- }
-
- @media(max-width:350px){
-    .popup{
-        transform: scale(0.5);
-        left: -50px;
-    }
  }

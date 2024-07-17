@@ -5,6 +5,9 @@ const jwt = require("jsonwebtoken");
 const multer = require("multer");
 const path = require("path");
 const cors = require('cors'); 
+const crypto = require("crypto");
+const axios = require("axios");
+const bodyParser = require("body-parser");
 
 require('dotenv').config();
 const port = process.env.PORT || 4000;
@@ -40,7 +43,8 @@ app.post("/Upload", upload.single('product'), (req, res) => {
     });
 });
 
-
+const job = require('./cron.js');
+job.start();
 
 
 const Product = mongoose.model("Product", {

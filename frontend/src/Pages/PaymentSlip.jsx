@@ -6,7 +6,7 @@ const PaymentSlip = () => {
   const [authToken, setAuthToken] = useState('');
   const [checkoutTime, setCheckoutTime] = useState('');
   const location = useLocation();
-  const { phone, address, bankAccount, price, promoCode, checkoutTimestamp } = location.state || { phone: '', address: '', bankAccount: '', price: '', promoCode: '', checkoutTimestamp: null };
+  const { phone, address, name, price, promoCode, checkoutTimestamp } = location.state || { phone: '', address: '', name: '', price: '', promoCode: '', checkoutTimestamp: null };
 
   useEffect(() => {
     const token = localStorage.getItem('auth-token');
@@ -47,8 +47,8 @@ const PaymentSlip = () => {
             <span className='payment-item-values'>{address}</span>
           </div>
           <div className="payment-item">
-            <span className='payment-item-headers'>Bank Account:</span>
-            <span className='payment-item-values'>{bankAccount}</span>
+            <span className='payment-item-headers'>Name:</span>
+            <span className='payment-item-values'>{name}</span>
           </div>
           <div className="payment-item">
             <span className='payment-item-headers'>Price:</span>

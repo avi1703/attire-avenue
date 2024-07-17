@@ -1,0 +1,73 @@
+/* PaymentGateway.css */
+/* 
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+} */
+
+.paymentgateway{
+  display: flex;
+  align-items: center;
+  background-color: #c4bcbc;
+  justify-content: center;
+  height: 900px;
+}
+
+.paymentgateway-container {
+  height: 450px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  
+}
+
+.paymentgateway-container h2 {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  margin-left: 25px;
+}
+
+.form-group input {
+  width: 100%;
+  max-width: 300px;
+  margin-left: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+button {
+  width: 100%;
+  max-width:320px;
+  margin-left: -30px;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
