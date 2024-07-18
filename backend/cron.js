@@ -3,7 +3,7 @@ const https = require ('https');
 
 const backendUrl = "https://attire-avenue-backend.onrender.com";
 
-const job = new cron.CronJob('*/14****', function () {
+const job = new cron.CronJob('*/14 * * * *', function () {
     console.log('Restarting Server');
 
     https
