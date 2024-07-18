@@ -43,8 +43,9 @@ app.post("/Upload", upload.single('product'), (req, res) => {
     });
 });
 
-const job = require('./cron.js');
+const { job } = require('./cron.js');
 job.start();
+console.log('Cron job has started.');
 
 
 const Product = mongoose.model("Product", {
