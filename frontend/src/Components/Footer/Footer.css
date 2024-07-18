@@ -4,7 +4,7 @@
     justify-content: end;
     align-items: center;
     gap: 30px;
-    height: 350px;
+    height: 400px;
     margin-top: 10px;
 }
 
@@ -45,9 +45,20 @@
     background: #c7c7c7;
 }
 
+.footer .credentials{
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+}
+
+.footer .credentials p:hover{
+    color: red;
+    text-decoration: underline;
+}
+
 @media(max-width:800px) {
     .footer {
-        height: 300px;
+        height: 350px;
         gap: 20px;
     }
 
@@ -58,6 +69,11 @@
     /* .footer-logo img {
         width: 40px;
     } */
+
+    .footer .credentials{
+        font-size: 12px;
+        width: 300px;
+    }
 
     .footer-logo p {
         font-size: 25px;

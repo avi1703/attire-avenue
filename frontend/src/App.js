@@ -12,6 +12,9 @@ import women_banner from './Components/Assets/banner_women.png';
 import kids_banner from './Components/Assets/banner_kids.png';
 import PaymentSlip from './Pages/PaymentSlip'
 import Paymentgateway from './Components/PaymentGateway/Paymentgateway'
+import TermsConditions from './Pages/TermsConditions';
+import RefundPolicy from './Pages/RefundPolicy';
+import ContactUs from './Pages/ContactUs';
 
 function App() {
   return (
@@ -30,6 +33,9 @@ function App() {
           <Route path="/login" element={<LoginSignup />} />
           <Route path="/paymentslip" element={<PaymentSlip />} />
           <Route path="/paymentgateway" element={<Paymentgateway />} />
+          <Route path="/termsandconditions" element={<TermsConditions />} />
+          <Route path="/refundpolicy" element={<RefundPolicy />} />
+          <Route path="/contactus" element={<ContactUs />} />
         </Routes>
         <Footer />
       </BrowserRouter>

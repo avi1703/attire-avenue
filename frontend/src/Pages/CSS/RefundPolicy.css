@@ -1,0 +1,49 @@
+.RefundPolicy{
+    background-color: #fce3fe;
+    height: 750px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.RefundPolicy-container{
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.2);;
+    width: 900px;
+    height: 650px;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.RefundPolicy-container h1{
+    margin: 20px;
+}
+
+.RefundPolicy-container h3{
+    margin: 20px;
+}
+
+.RefundPolicy-container p{
+    margin: 20px;
+}
+
+@media(max-width:800px){
+    .RefundPolicy{
+        height: 500px;
+    }
+    .RefundPolicy-container{
+        transform: scale(0.5);
+        height: 700px;
+    }
+}
+
+@media(max-width:500px){
+    .RefundPolicy{
+        height: 700px;
+    }
+    .RefundPolicy-container{
+        height: 1100px;
+        overflow-y: scroll;
+    }
+}

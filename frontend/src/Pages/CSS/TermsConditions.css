@@ -1,0 +1,59 @@
+.Terms{
+    background-color: #fce3fe;
+    height: 1250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Terms-container{
+    width: 1400px;
+    height: 1050px;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.2);
+}
+
+.Terms-container h1{
+    margin: 20px;
+}
+
+.Terms-container h3{
+    margin: 20px;
+}
+
+.Terms-container p{
+    margin: 20px;
+}
+
+.Terms-container ul{
+    margin-top: 20px;
+}
+
+@media(max-width:1421px){
+    .Terms-container{
+        width: 1200px;
+        height: 1150px;
+    }
+}
+
+@media(max-width:1220px){
+    .Terms-container{
+        width: 1000px;
+        overflow-y: scroll;
+    }
+}
+
+@media(max-width:1022px){
+    .Terms-container{
+        width: 700px;
+    }
+}
+
+@media(max-width:770px){
+    .Terms-container{
+        width: 300px;
+    }
+}
