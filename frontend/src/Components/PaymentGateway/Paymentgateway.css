@@ -54,7 +54,7 @@ body {
   border-radius: 4px;
 }
 
-button {
+.paynow {
   width: 100%;
   max-width:320px;
   margin-left: -30px;
@@ -68,6 +68,28 @@ button {
   font-size: 16px;
 }
 
-button:hover {
+.paynow:hover {
   background-color: #0056b3;
+}
+
+
+@media(max-width:472px){
+  .paymentgateway-container{
+    transform: scale(0.6);
+  }
+}
+
+@media(max-width:360px){
+  .paymentgateway-container{
+    width: 300px;
+  }
+
+  .form-group input{
+    width: 250px;
+  }
+
+  .paynow{
+    width: 250px;
+    margin-left: 0px;
+  }
 }

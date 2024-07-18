@@ -61,7 +61,7 @@ const Paymentgateway = () => {
             required
           />
         </div>
-        <button type="submit">Pay Now</button>
+        <button className='paynow' type="submit">Pay Now</button>
       </form>
     </div>
     </div>
