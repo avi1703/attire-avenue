@@ -21,6 +21,7 @@ mongoose.connect(process.env.MONGODB_URI)
 
 
 app.get("/", (req, res) => {
+    console.log('Ping received at:', new Date().toISOString());
     res.send("Express app is running") 
 })
 
