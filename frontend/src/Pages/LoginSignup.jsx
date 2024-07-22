@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import './CSS/LoginSignup.css';
+import { Link } from 'react-router-dom';
 
 const LoginSignup = () => {
-  const [state, setState] = useState("Login");
+  const [state, setState] = useState("Sign Up");
   const [formData, setFormData] = useState({
     username: "",
     email: "",
     password: ""
   });
+  const [isChecked, setIsChecked] = useState(false);
   const [showLoginFirstMessage, setShowLoginFirstMessage] = useState(false);
 
   useEffect(() => {
@@ -22,7 +24,16 @@ const LoginSignup = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleCheckboxChange = (e) => {
+    setIsChecked(e.target.checked);
+  };
+
   const login = async () => {
+    if (!isChecked) {
+      alert("Please check the checkbox to proceed.");
+      return;
+    }
+
     console.log("Login Attempt!", formData);
     let responseData;
     await fetch('https://attire-avenue-backend.onrender.com/login', {
@@ -43,6 +54,11 @@ const LoginSignup = () => {
   };
 
   const signup = async () => {
+    if (!isChecked) {
+      alert("Please check the checkbox to proceed.");
+      return;
+    }
+
     console.log("Attempting signup with:", formData);
     let responseData;
     await fetch('https://attire-avenue-backend.onrender.com/signup', {
@@ -55,8 +71,11 @@ const LoginSignup = () => {
     }).then((response) => response.json()).then((data) => responseData = data);
 
     if (responseData.sucess) {
-      localStorage.setItem("auth-token", responseData.token);
-      window.location.replace("/");
+      setState('Login');
+      setFormData({
+        email:"",
+        password:""
+      })
     } else {
       alert(responseData.errors);
     }
@@ -107,8 +126,8 @@ const LoginSignup = () => {
           </p>
         )}
         <div className="loginsignup-agree">
-          <input type="checkbox" name='' id='' />
-          <p>By continuing, I agree to the terms of use & privacy policy.</p>
+          <input type="checkbox" onChange={handleCheckboxChange} />
+          <p>By continuing, I agree to the <Link style={{color:"red", }} to="/termsandconditions">terms & conditions</Link></p>
         </div>
       </div>
     </div>

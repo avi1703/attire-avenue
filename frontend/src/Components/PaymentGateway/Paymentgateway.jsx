@@ -1,17 +1,23 @@
 import React, { useState } from 'react';
-import './Paymentgateway.css'
-import { useNavigate , useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
+import QRCode from 'qrcode.react'; // Import the QR code library
+import './Paymentgateway.css';
+import chip from '../Assets/chip.png';
+import gpay from '../Assets/GPay_logo.png';
+import paytm from '../Assets/paytm_logo.png';
+import phonepe from '../Assets/phonepe_logo.png';
 
 const Paymentgateway = () => {
-  const [accountNumber, setAccountNumber] = useState('');
-  const [password, setPassword] = useState('');
+  const [activeForm, setActiveForm] = useState(null);
+  const [cardNumber, setCardNumber] = useState('');
+  const [upiVisible, setUpiVisible] = useState(false);
+  const [showQR, setShowQR] = useState(false); // State to handle QR code visibility
   const location = useLocation();
-  const { phone, address, name,  price, promoCode, checkoutTimestamp } = location.state;
-
   const navigate = useNavigate();
 
+  const { phone, address, name, price, promoCode, checkoutTimestamp } = location.state;
+
   const handlePay = () => {
-    // Process payment logic here
     navigate('/paymentslip', {
       state: {
         phone,
@@ -21,53 +27,147 @@ const Paymentgateway = () => {
         promoCode,
         checkoutTimestamp,
       },
+      replace: true,
     });
   };
 
+  const handleInputChange = (e, formId) => {
+    const form = e.target.form;
+    const anyValueFilled = Array.from(form.elements).some(input => input.value !== '');
+    setActiveForm(anyValueFilled ? formId : null);
+
+    if (e.target.name === 'cardNumber') {
+      setCardNumber(e.target.value);
+    }
+  };
+
+  const handleCancel = () => {
+    setActiveForm(null);
+    document.querySelectorAll('.form input').forEach(input => input.value = '');
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (cardNumber.length !== 16) {
+      alert("Card number must be exactly 16 digits.");
+      return;
+    }
+    handlePay();
+  };
+
+  const handleKeyPress = (e) => {
+    const charCode = e.which || e.keyCode;
+    const charStr = String.fromCharCode(charCode);
+    if (!charStr.match(/^[a-zA-Z\s]*$/)) {
+      e.preventDefault();
+    }
+  };
+
+  const toggleUpiOptions = () => {
+    setUpiVisible(!upiVisible);
+  };
+
+  const handleUPIClick = () => {
+    setShowQR(true); // Show the QR code when a UPI icon is clicked
+  };
+
+  const generateQRUrl = () => {
+    const baseUrl = "https://attire-avenue-frontend.vercel.app"; // Use your Vercel site URL
+    const params = new URLSearchParams({
+      phone,
+      address,
+      name,
+      price,
+      promoCode,
+      checkoutTimestamp,
+    });
+    return `${baseUrl}/qrredirect?${params.toString()}`;
+  };
+  
+
   return (
-    <div className='paymentgateway'>
-    <div className="paymentgateway-container">
-      <h2>Payment Gateway</h2>
-      <form id="payment-form" onSubmit={handlePay}>
-        <div className="form-group">
-          <label htmlFor="name">Name</label>
+    <div className="card-form-container">
+      <div className={`card-form ${activeForm === 1 ? '' : 'inactive'} ${upiVisible ? 'expanded' : ''}`}>
+        <div className="card blue-card">
+          <div className="bankname">BANK</div>
+          <div className="card-chip"><img src={chip} alt="chip" /></div>
+          <div className="card-number"><span>1234</span> <span>5678</span> <span>9012</span> <span>3456</span></div>
+          <div className="card-date">12/24</div>
+          <div className="card-name">CARDHOLDER NAME</div>
+        </div>
+        <form className="form" onSubmit={handleSubmit}>
+          <input
+            type="number"
+            placeholder="CARD NUMBER"
+            name="cardNumber"
+            pattern="\d{16}"
+            maxLength="16"
+            minLength="16"
+            onChange={(e) => handleInputChange(e, 1)}
+            disabled={activeForm !== null && activeForm !== 1}
+            required
+          />
           <input
             type="text"
-            id="name"
-            name="name"
-            value={name}
+            placeholder="CARDHOLDER NAME"
+            name="cardholderName"
+            onKeyPress={handleKeyPress}
+            onChange={(e) => handleInputChange(e, 1)}
+            disabled={activeForm !== null && activeForm !== 1}
             required
           />
+          <div className="form-row">
+            <input
+              type="number"
+              placeholder="MM"
+              onChange={(e) => handleInputChange(e, 1)}
+              disabled={activeForm !== null && activeForm !== 1}
+              required
+            />
+            <input
+              type="number"
+              placeholder="YY"
+              onChange={(e) => handleInputChange(e, 1)}
+              disabled={activeForm !== null && activeForm !== 1}
+              required
+            />
+            <input
+              type="number"
+              placeholder="CVV"
+              onChange={(e) => handleInputChange(e, 1)}
+              disabled={activeForm !== null && activeForm !== 1}
+              required
+            />
+          </div>
+          <div className="form-buttons">
+            <button type="submit" className="pay-now" disabled={activeForm !== null && activeForm !== 1}>
+              PAY NOW
+            </button>
+            {activeForm === 1 && <button style={{color:"#007bff" , border:"3px solid #007bff"}} type="button" className="cancel" onClick={handleCancel}>CANCEL</button>}
+          </div>
+        </form>
+        <button className="upi-button" onClick={toggleUpiOptions}>
+          {upiVisible ? 'HIDE UPI OPTIONS' : 'SHOW UPI OPTIONS'}
+        </button>
+        {upiVisible && (
+          <div className="upi-icons">
+            <div className="upi-icon" onClick={handleUPIClick}><img src={gpay} alt="GPay" /></div>
+            <div className="upi-icon" onClick={handleUPIClick}><img src={paytm} alt="Paytm" /></div>
+            <div className="upi-icon" onClick={handleUPIClick}><img src={phonepe} alt="PhonePe" /></div>
+          </div>
+        )}
+      </div>
+      {showQR && (
+        <div className="qr-modal">
+          <div className="qr-code">
+            <QRCode value={generateQRUrl()} size={256} />
+          </div>
         </div>
-        <div className="form-group">
-          <label htmlFor="account-number">Account Number</label>
-          <input
-            type="text"
-            id="account-number"
-            name="account-number"
-            value={accountNumber}
-            onChange={(e) => setAccountNumber(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Bank Account Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button className='paynow' type="submit">Pay Now</button>
-      </form>
-    </div>
+      )}
+      <p>Note- Please Check our <Link to="/refundpolicy" style={{color:'red'}}>Refund Policy</Link> before Paying,</p>
+      <p>Thank you, team Attire Avenue.</p>
     </div>
   );
 };
 
-
-
-export default Paymentgateway
+export default Paymentgateway;

@@ -15,6 +15,7 @@ import Paymentgateway from './Components/PaymentGateway/Paymentgateway'
 import TermsConditions from './Pages/TermsConditions';
 import RefundPolicy from './Pages/RefundPolicy';
 import ContactUs from './Pages/ContactUs';
+import QRRedirect from './Pages/QRRedirect'
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route path="/termsandconditions" element={<TermsConditions />} />
           <Route path="/refundpolicy" element={<RefundPolicy />} />
           <Route path="/contactus" element={<ContactUs />} />
+          <Route path="/qrredirect" element={<QRRedirect />} />
         </Routes>
         <Footer />
       </BrowserRouter>

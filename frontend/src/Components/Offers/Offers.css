@@ -85,8 +85,8 @@
 @media(max-width:1024px) {
     .offers {
         padding: 0px 60px;
-        margin-bottom: 80px;
-        height: 40vh;
+        margin-bottom: 40px;
+        height: 300px;
     }
 
     .offers-left h1 {

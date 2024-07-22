@@ -211,11 +211,11 @@
 
     .nav-login-cart {
         transform: scale(0.8);
-        gap: 0px;
+        gap: 30px;
     }
 
     .nav-cart-count {
-        margin-left: -10px;
+        margin-left: -35px;
     }
 }
 

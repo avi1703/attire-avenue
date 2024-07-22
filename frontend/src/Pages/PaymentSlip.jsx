@@ -6,25 +6,22 @@ const PaymentSlip = () => {
   const [authToken, setAuthToken] = useState('');
   const [checkoutTime, setCheckoutTime] = useState('');
   const location = useLocation();
-  const { phone, address, name, price, promoCode, checkoutTimestamp } = location.state || { phone: '', address: '', name: '', price: '', promoCode: '', checkoutTimestamp: null };
+  const { phone, address, name, price, promoCode, checkoutTimestamp } = location.state || {};
 
   useEffect(() => {
     const token = localStorage.getItem('auth-token');
     setAuthToken(token);
 
-    // Format the checkout time
     if (checkoutTimestamp) {
       const checkoutDate = new Date(checkoutTimestamp);
       setCheckoutTime(checkoutDate.toLocaleString());
     }
   }, [checkoutTimestamp]);
 
-  // Function to format order ID to exactly 15 characters
   const formatOrderID = (token) => {
     if (!token) return '';
-    if (token.length === 15) return token; // If already 15 characters, return as is
-    if (token.length > 15) return token.slice(0, 15); // Truncate if longer than 15 characters
-    // Pad with zeros if shorter than 15 characters
+    if (token.length === 15) return token;
+    if (token.length > 15) return token.slice(0, 15);
     return token.padEnd(15, '0');
   };
 
@@ -54,12 +51,12 @@ const PaymentSlip = () => {
             <span className='payment-item-headers'>Price:</span>
             <span className='payment-item-values'>${price}</span>
           </div>
-          {promoCode &&
+          {promoCode && (
             <div className="payment-item">
               <span className='payment-item-headers'>Promo Code:</span>
               <span className='payment-item-values'>{promoCode}</span>
             </div>
-          }
+          )}
           <div className="payment-item">
             <span className='payment-item-headers'>Checkout Time:</span>
             <span className='payment-item-values'>{checkoutTime}</span>
@@ -70,11 +67,11 @@ const PaymentSlip = () => {
           </div>
         </div>
       </div>
-      <Link className='goback-button' to="/">
+      <Link className='goback-button' to="/" replace>
         <button>Go Back</button>
       </Link>
     </div>
   );
-}
+};
 
 export default PaymentSlip;
