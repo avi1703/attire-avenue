@@ -181,14 +181,17 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.8);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .qr-code {
   background: #fff;
+  margin-bottom: 40px;
   padding: 20px;
   border-radius: 10px;
+  z-index: 10000;
 }
 
 .qr-code button {
@@ -199,6 +202,31 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+
+/* Add this to your Paymentgateway.css */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: 999; /* Ensure it's on top of other content */
+}
+
+.qr-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* background: white; */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 1000; /* Ensure it appears above the overlay */
 }
 
 

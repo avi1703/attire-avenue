@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './CSS/PaymentSlip.css';
+import { ShopContext } from '../Context/ShopContext';
 
 const PaymentSlip = () => {
   const [authToken, setAuthToken] = useState('');
   const [checkoutTime, setCheckoutTime] = useState('');
+  const [hasClearedCart, setHasClearedCart] = useState(false); // Flag to check if cart is cleared
+  const { clearCart } = useContext(ShopContext);
   const location = useLocation();
   const { phone, address, name, price, promoCode, checkoutTimestamp } = location.state || {};
 
@@ -16,7 +19,13 @@ const PaymentSlip = () => {
       const checkoutDate = new Date(checkoutTimestamp);
       setCheckoutTime(checkoutDate.toLocaleString());
     }
-  }, [checkoutTimestamp]);
+
+    // Clear the cart only if it hasn't been cleared yet
+    if (!hasClearedCart) {
+      clearCart();
+      setHasClearedCart(true); // Set flag to true to prevent further clearing
+    }
+  }, [checkoutTimestamp, clearCart, hasClearedCart]);
 
   const formatOrderID = (token) => {
     if (!token) return '';
@@ -37,19 +46,19 @@ const PaymentSlip = () => {
           </div>
           <div className="payment-item">
             <span className='payment-item-headers'>Phone:</span>
-            <span className='payment-item-values'>{phone}</span>
+            <span className='payment-item-values'>{phone || 'N/A'}</span>
           </div>
           <div className="payment-item">
             <span className='payment-item-headers'>Address:</span>
-            <span className='payment-item-values'>{address}</span>
+            <span className='payment-item-values'>{address || 'N/A'}</span>
           </div>
           <div className="payment-item">
             <span className='payment-item-headers'>Name:</span>
-            <span className='payment-item-values'>{name}</span>
+            <span className='payment-item-values'>{name || 'N/A'}</span>
           </div>
           <div className="payment-item">
             <span className='payment-item-headers'>Price:</span>
-            <span className='payment-item-values'>${price}</span>
+            <span className='payment-item-values'>${price || 'N/A'}</span>
           </div>
           {promoCode && (
             <div className="payment-item">
@@ -59,11 +68,11 @@ const PaymentSlip = () => {
           )}
           <div className="payment-item">
             <span className='payment-item-headers'>Checkout Time:</span>
-            <span className='payment-item-values'>{checkoutTime}</span>
+            <span className='payment-item-values'>{checkoutTime || 'N/A'}</span>
           </div>
           <div className="payment-item">
             <span className='payment-item-headers'>Payment Status:</span>
-            <span className='payment-item-values sucess-message'>Successful!</span>
+            <span className='payment-item-values success-message'>Successful!</span>
           </div>
         </div>
       </div>

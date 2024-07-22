@@ -5,7 +5,7 @@ import remove_icon from '../Assets/cart_cross_icon.png';
 import { useNavigate } from 'react-router-dom';
 
 const CartItems = () => {
-  const { getTotalCartAmount, all_product, cartItems, removeFromCart, clearCart } = useContext(ShopContext);
+  const { getTotalCartAmount, all_product, cartItems, removeFromCart} = useContext(ShopContext);
   const [phone, setPhone] = useState('');
   const [address, setAddress] = useState('');
   const [name, setName] = useState('');
@@ -79,7 +79,6 @@ const CartItems = () => {
         setSubmitError('Please click on submit button so that we may check that whether the code is correct or not');
         clearMessagesAfterDelay();
       } else {
-        clearCart();
         const checkoutTimestamp = new Date().toISOString();
         navigate('/paymentgateway', {
           state: {
