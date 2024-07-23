@@ -28,7 +28,9 @@ const PaymentSlip = () => {
   }, [checkoutTimestamp, clearCart, hasClearedCart]);
 
   const formatOrderID = (token) => {
-    if (!token) return '';
+    if (!token) {
+      return Math.random().toString().slice(2, 12); // Generate a random 10-digit number
+    }
     if (token.length === 15) return token;
     if (token.length > 15) return token.slice(0, 15);
     return token.padEnd(15, '0');
