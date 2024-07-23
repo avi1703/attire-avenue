@@ -4,12 +4,12 @@
 
 # Features
 <ul>
-  <li><b>User Authentication: </b>Signup, Login, JWT Authentication. </li>
-  <li><b>Product Categories: </b>Attires for men, women, and kids. </li>
-  <li>Product Browsing: </b> Browse through a variety of products. </li>
-  <li>Shopping Cart: </b> Display all items you have added to the cart. </li>
-  <li>Payment Gateway: </b>Self-made payment gateway with two payment options - Card and UPI (not for real transactions). </li>
-  <li>Responsive Design: </b> Ensures a seamless experience across different devices. </li>
+  <li><b><ins>User Authentication</ins>: </b>Signup, Login, JWT Authentication. </li>
+  <li><b><ins>Product Categories</ins>: </b>Attires for men, women, and kids. </li>
+  <li><b><ins>Product Browsing</ins>: </b> Browse through a variety of products. </li>
+  <li><b><ins>Shopping Cart</ins>: </b> Display all items you have added to the cart. </li>
+  <li><b><ins>Payment Gateway</ins>: </b>Self-made payment gateway with two payment options - Card and UPI (not for real transactions). </li>
+  <li><b><ins>Responsive Design</ins>: </b>Ensures a seamless experience across different devices. </li>
 </ul>
 
 # Quick Demo
