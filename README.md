@@ -69,4 +69,3 @@ Follow the steps below to install and run the project on your local machine:
 
   
   **7. Proceed to checkout and make a payment using the integrated payment gateway.**
-</ol>
