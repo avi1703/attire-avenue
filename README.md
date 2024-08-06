@@ -37,7 +37,6 @@ https://github.com/user-attachments/assets/6d7cc8ea-c37a-44f4-8212-504337aa4de0
 # Installation
 ### Prerequisites:
   - NodeJs
-  - MongoDB Atlas Account
 
     
 Follow the steps below to install and run the project on your local machine:
